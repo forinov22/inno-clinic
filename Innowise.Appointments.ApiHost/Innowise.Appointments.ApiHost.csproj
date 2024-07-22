@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Innowise.Appointments.Application\Innowise.Appointments.Application.csproj" />
+    <ProjectReference Include="..\Innowise.Appointments.Contracts\Innowise.Appointments.Contracts.csproj" />
     <ProjectReference Include="..\Innowise.Appointments.Infrastructure\Innowise.Appointments.Infrastructure.csproj" />
     <ProjectReference Include="..\Innowise.Infrastructure.Exceptions\Innowise.Infrastructure.Exceptions.csproj" />
     <ProjectReference Include="..\Innowise.Infrastructure.Services\Innowise.Infrastructure.Services.csproj" />

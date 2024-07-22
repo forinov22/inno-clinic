@@ -1,5 +1,7 @@
 using Appointments.Application.Appointments.Common;
 using Appointments.Application.Patients.Queries.GetHistory;
+using Innowise.Appointments.Contracts.Appointments;
+using Innowise.Appointments.Contracts.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +12,9 @@ namespace Appointments.API.Controllers;
 public class PatientController(ISender sender)
 {
     [HttpGet("{id:guid}/appointments")]
-    public async Task<ActionResult<IEnumerable<AppointmentResult>>> ListHistory([FromRoute] Guid id)
+    public async Task<ActionResult<IEnumerable<AppointmentContract>>> ListHistory([FromRoute] Guid id)
     {
         var appointments = await sender.Send(new GetPatientAppointmentsHistoryQuery(id));
-        return appointments.ToList();
+        return appointments.Select(appointment => appointment.ToAppointmentContract()).ToList();
     }
 }

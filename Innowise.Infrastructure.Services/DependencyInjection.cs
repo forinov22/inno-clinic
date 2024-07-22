@@ -4,29 +4,30 @@ using System.Net;
 using InnoClinic.Services.Email;
 using Microsoft.Extensions.Configuration;
 using InnoClinic.Authentication;
+using Innowise.Common.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using InnoClinic.Services.Endpoints;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Reflection;
+using Microsoft.Extensions.Options;
 
 namespace InnoClinic.Services;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddEmail(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddEmail(this IServiceCollection services, Action<EmailOptions> configureOptions)
     {
-        var emailOptions = new EmailOptions();
-        configuration.Bind(EmailOptions.Email, emailOptions);
+        services.BindOptions(configureOptions);
 
-        services.Configure<EmailOptions>(configuration.GetSection(EmailOptions.Email));
-
-        services.AddScoped(x => new SmtpClient()
+        services.AddScoped(serviceProvider =>
         {
-            Host = emailOptions.Host,
-            Port = emailOptions.Port,
-            Credentials = new NetworkCredential(emailOptions.Username, emailOptions.Password),
-            EnableSsl = true,
+            var emailOptions = serviceProvider.GetRequiredService<IOptions<EmailOptions>>().Value;
+
+            return new SmtpClient()
+            {
+                Host = emailOptions.Host,
+                Port = emailOptions.Port,
+                Credentials = new NetworkCredential(emailOptions.Username, emailOptions.Password),
+                EnableSsl = true,
+            };
         });
 
         services.AddScoped<IEmailService, EmailService>();
@@ -34,42 +35,13 @@ public static class DependencyInjection
         return services;
     }
 
-    public static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddAuth(this IServiceCollection services, Action<JwtBearerOptions> configureOptions)
     {
-        var jwtOptions = new JwtOptions();
-        configuration.Bind(JwtOptions.Jwt, jwtOptions);
+        services.BindOptions(configureOptions);
 
-        services.Configure<JwtOptions>(configuration.GetSection(JwtOptions.Jwt));
-
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidIssuer = jwtOptions.ValidIssuer,
-                ValidAudience = jwtOptions.ValidAudience,
-                IssuerSigningKey = jwtOptions.GetSymmetricSecurityKey(),
-                ValidateIssuer = jwtOptions.ValidateIssuer,
-                ValidateAudience = jwtOptions.ValidateAudience,
-                ValidateIssuerSigningKey = jwtOptions.ValidateIssuerSigningKey,
-                ValidateLifetime = jwtOptions.ValidateLifeTime
-            };
-        });
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(configureOptions);
 
         services.AddAuthorization();
-
-        return services;
-    }
-
-    public static IServiceCollection AddEndpoints(this IServiceCollection services, Assembly assembly)
-    {
-        var endpointServiceDescriptors = assembly
-            .DefinedTypes
-            .Where(type => type is { IsAbstract: false, IsInterface: false } &&
-                           type.IsAssignableTo(typeof(IEndpoint)))
-            .Select(type => ServiceDescriptor.Transient(typeof(IEndpoint), type))
-            .ToArray();
-
-        services.TryAddEnumerable(endpointServiceDescriptors);
 
         return services;
     }

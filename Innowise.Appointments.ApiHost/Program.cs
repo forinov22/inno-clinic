@@ -8,19 +8,23 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+builder.Host.UseSerilog((context, configuration)
+                            => configuration.ReadFrom.Configuration(context.Configuration));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddProblemDetails();
-builder.Services.AddHttpClient();
 builder.Services.AddExceptionHandler<ValidationExceptionHandlingMiddleware>();
 builder.Services.AddExceptionHandler<ExceptionHandlingMiddleware>();
 
 builder.Services
        .AddApplication()
-       .AddInfrastructure(builder.Configuration)
-       .AddAuth(builder.Configuration)
-       .AddEmail(builder.Configuration);
+       .AddPersistence(builder.Configuration)
+       .AddHttpClients(builder.Configuration)
+       .AddPolly()
+       .AddRedis(builder.Configuration)
+       .AddPdf()
+       .AddAuth(builder.Configuration.GetSection("JwtOptions").Bind)
+       .AddEmail(builder.Configuration.GetSection("EmailOptions").Bind);
 
 var app = builder.Build();
 

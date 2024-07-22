@@ -1,4 +1,6 @@
 using Appointments.Application.Appointments.Common;
+using Appointments.Application.Appointments.Exceptions;
+using Appointments.Application.Extensions;
 using Appointments.Application.Interfaces;
 using Auth.Domain.Exceptions;
 using MediatR;
@@ -12,9 +14,9 @@ public class GetResultByAppointmentIdQueryHandler(IUnitOfWork unitOfWork) : IReq
         var result = await unitOfWork.ResultRepository.GetByAppointmentIdAsync(request.AppointmentId);
         if (result is null)
         {
-            throw new NotFoundException("Result not found");
+            throw new ResultNotFoundException();
         }
-        
-        return result.MapToDto();
+
+        return result.ToResultResult();
     }
 }

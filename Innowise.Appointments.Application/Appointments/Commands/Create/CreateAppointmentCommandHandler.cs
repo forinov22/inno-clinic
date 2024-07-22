@@ -1,35 +1,44 @@
-﻿using Appointments.Application.Appointments.Common;
+﻿using System.Text.Json;
+using Appointments.Application.Appointments.Common;
+using Appointments.Application.Doctors.Exceptions;
+using Appointments.Application.Extensions;
 using Appointments.Application.Interfaces;
+using Appointments.Application.Interfaces.HttpClients.Services;
+using Appointments.Application.Patients.Exceptions;
+using Appointments.Application.Services.Exceptions;
 using Appointments.Domain.Entities;
-using Auth.Domain.Exceptions;
 using MediatR;
+using Microsoft.Extensions.Caching.Distributed;
+using Polly.Registry;
 
 namespace Appointments.Application.Appointments.Commands.Create;
 
-internal class CreateAppointmentCommandHandler(IUnitOfWork unitOfWork)
+internal class CreateAppointmentCommandHandler(
+    IUnitOfWork unitOfWork,
+    IServiceHttpClient serviceHttpClient,
+    IDistributedCache distributedCache,
+    ResiliencePipelineProvider<string> pipelineProvider)
     : IRequestHandler<CreateAppointmentCommand, AppointmentResult>
 {
     public async Task<AppointmentResult> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
     {
         var doctor = await unitOfWork.DoctorRepository.GetByIdAsync(request.DoctorId);
         var patient = await unitOfWork.PatientRepository.GetByIdAsync(request.PatientId);
-        var service = await unitOfWork.ServiceRepository.GetServiceByIdAsync(request.ServiceId);
-
-        // await Task.WhenAll(doctorTask, patientTask, serviceTask);
+        var service = await FetchService(request.ServiceId);
 
         if (doctor is null)
         {
-            throw new NotFoundException("Doctor not found");
+            throw new DoctorNotFoundException();
         }
 
         if (patient is null)
         {
-            throw new NotFoundException("Patient not found");
+            throw new PatientNotFoundException();
         }
 
         if (service is null)
         {
-            throw new NotFoundException("Service not found");
+            throw new ServiceNotFoundException();
         }
 
         var appointment = new Appointment()
@@ -44,6 +53,26 @@ internal class CreateAppointmentCommandHandler(IUnitOfWork unitOfWork)
         unitOfWork.AppointmentRepository.Add(appointment);
         await unitOfWork.SaveAllAsync();
 
-        return appointment.MapToDto();
+        return appointment.ToAppointmentResult();
+    }
+
+    private async Task<Service?> FetchService(Guid serviceId)
+    {
+        var serviceKey = $"service-{serviceId}";
+        var serviceString = await distributedCache.GetStringAsync(serviceKey);
+
+        if (serviceString is null)
+        {
+            var pipeline = pipelineProvider.GetPipeline("services-client");
+            var serviceResponse = await pipeline.ExecuteAsync(async (token) =>
+            {
+                return await serviceHttpClient.GetServiceByIdAsync(new ServiceRequest(serviceId));
+            });
+
+            await distributedCache.SetStringAsync(serviceKey, JsonSerializer.Serialize(serviceResponse));
+            return serviceResponse?.ToService();
+        }
+
+        return JsonSerializer.Deserialize<Service>(serviceString);
     }
 }

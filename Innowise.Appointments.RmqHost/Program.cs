@@ -1,17 +1,22 @@
 using Appointments.Application;
 using Appointments.Infrastructure;
-using InnoClinic.Services;
+using Innowise.Appointments.RmqHost;
 using Innowise.Appointments.RmqHost.Consumers;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 builder.Services.AddMassTransit(config =>
 {
+    config.AddEntityFrameworkOutbox<OutboxDbContext>(o =>
+    {
+        o.UsePostgres();
+    });
+
     config.AddConsumer<DoctorProfileCreatedConsumer>();
     config.AddConsumer<PatientProfileCreatedConsumer>();
     config.AddConsumer<PatientProfileLinkedToAccountConsumer>();
@@ -20,10 +25,18 @@ builder.Services.AddMassTransit(config =>
     config.UsingRabbitMq((context, cfg) => { cfg.ConfigureEndpoints(context); });
 });
 
+builder.Services.AddDbContext<OutboxDbContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("Postgres")
+        ?? throw new NullReferenceException("Connection string is not provided");
+
+    options.UseNpgsql(connectionString);
+});
+
 builder.Services
        .AddApplication()
-       .AddInfrastructure(builder.Configuration)
-       .AddEmail(builder.Configuration);
+       .AddPersistence(builder.Configuration)
+       .AddRedis(builder.Configuration);
 
 var app = builder.Build();
 

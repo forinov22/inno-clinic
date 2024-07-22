@@ -3,7 +3,7 @@
 public class Appointment
 {
     public const int TimeSlotSize = 10;
-    
+
     public Guid Id { get; set; }
     public DateTime StartDate { get; set; }
     public bool IsApproved { get; set; }

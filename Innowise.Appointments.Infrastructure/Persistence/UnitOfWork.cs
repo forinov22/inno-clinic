@@ -1,4 +1,6 @@
 using Appointments.Application.Interfaces;
+using Appointments.Application.Interfaces.HttpClients;
+using Appointments.Application.Interfaces.HttpClients.Services;
 using Appointments.Application.Interfaces.Repositories;
 using Appointments.Infrastructure.Persistence.Repositories;
 using Microsoft.Extensions.Caching.Distributed;
@@ -10,9 +12,7 @@ namespace Appointments.Infrastructure.Persistence;
 public class UnitOfWork(
     AppointmentsDbContext context,
     HttpClient httpClient,
-    IDistributedCache distributedCache,
-    IConfiguration configuration,
-    ILogger<ServiceRepository> logger)
+    IConfiguration configuration)
     : IUnitOfWork
 {
     private readonly Lazy<IAppointmentRepository>
@@ -22,15 +22,15 @@ public class UnitOfWork(
     private readonly Lazy<IPatientRepository> _patientRepository = new(() => new PatientRepository(context));
     private readonly Lazy<IResultRepository> _resultRepository = new(() => new ResultRepository(context));
 
-    private readonly Lazy<IServiceRepository> _serviceRepository =
-        new(() => new ServiceRepository(httpClient, distributedCache, configuration, logger));
+    // private readonly Lazy<IServiceHttpClient> _serviceRepository =
+    //     new(() => new ServiceHttpClient(httpClient, distributedCache, configuration, logger));
 
 
     public IAppointmentRepository AppointmentRepository => _appointmentRepository.Value;
     public IDoctorRepository DoctorRepository => _doctorRepository.Value;
     public IPatientRepository PatientRepository => _patientRepository.Value;
     public IResultRepository ResultRepository => _resultRepository.Value;
-    public IServiceRepository ServiceRepository => _serviceRepository.Value;
+    // public IServiceHttpClient ServiceRepository => _serviceRepository.Value;
 
     public async Task SaveAllAsync()
     {

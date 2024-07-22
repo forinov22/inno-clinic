@@ -2,6 +2,8 @@ using Appointments.Application.Appointments.Common;
 using Appointments.Application.Doctors.Common;
 using Appointments.Application.Doctors.Queries.GetFreeForDoctor;
 using Appointments.Application.Doctors.Queries.GetUpcoming;
+using Innowise.Appointments.Contracts.Appointments;
+using Innowise.Appointments.Contracts.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,12 +14,12 @@ namespace Appointments.API.Controllers;
 public class DoctorController(ISender sender)
 {
     [HttpGet("{id:guid}/appointments")]
-    public async Task<ActionResult<IEnumerable<AppointmentResult>>> ListUpcoming([FromRoute] Guid id)
+    public async Task<ActionResult<IEnumerable<AppointmentContract>>> ListUpcoming([FromRoute] Guid id)
     {
         var appointments = await sender.Send(new GetDoctorUpcomingAppointmentsQuery(id));
-        return appointments.ToList();
+        return appointments.Select(appointment => appointment.ToAppointmentContract()).ToList();
     }
-    
+
     [HttpGet("{id:guid}/schedule")]
     public async Task<ActionResult<IEnumerable<TimeSlotResult>>> GetFreeTimeSlotsForDoctor([FromRoute] Guid id,
                                                                                            [FromQuery] DateTime? date)

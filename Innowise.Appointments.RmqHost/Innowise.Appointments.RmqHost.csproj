@@ -18,7 +18,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Innowise.Appointments.Application\Innowise.Appointments.Application.csproj" />
       <ProjectReference Include="..\Innowise.Appointments.Infrastructure\Innowise.Appointments.Infrastructure.csproj" />
-      <ProjectReference Include="..\Innowise.Infrastructure.Contracts\Innowise.Infrastructure.Contracts.csproj" />
+      <ProjectReference Include="..\Innowise.Infrastructure.Messages\Innowise.Infrastructure.Messages.csproj" />
     </ItemGroup>
 
 </Project>

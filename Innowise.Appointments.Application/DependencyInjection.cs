@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using InnoClinic.Behaviours;
+using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Appointments.Application;
@@ -14,7 +15,7 @@ public static class DependencyInjection
             options.AddOpenBehavior(typeof(ValidationBehaviour<,>));
         });
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
-        
+
         return services;
     }
 }

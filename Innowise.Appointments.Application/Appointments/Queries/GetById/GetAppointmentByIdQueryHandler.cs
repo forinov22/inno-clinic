@@ -1,4 +1,6 @@
 ﻿using Appointments.Application.Appointments.Common;
+using Appointments.Application.Appointments.Exceptions;
+using Appointments.Application.Extensions;
 using Appointments.Application.Interfaces;
 using Auth.Domain.Exceptions;
 using MediatR;
@@ -13,9 +15,9 @@ internal class GetAppointmentByIdQueryHandler(IUnitOfWork unitOfWork) : IRequest
 
         if (appointment == null)
         {
-            throw new NotFoundException("Appointment not found");
+            throw new AppointmentNotFoundException();
         }
 
-        return appointment.MapToDto();
+        return appointment.ToAppointmentResult();
     }
 }

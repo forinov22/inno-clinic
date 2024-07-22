@@ -13,12 +13,12 @@ public class NotifyUpcomingAppointmentsCommandHandler(IUnitOfWork unitOfWork, IE
         foreach (var appointment in appointments)
         {
             if (appointment.Patient.Email is null) continue;
-                
+
             var emailBody = $"""
-                             <h1>Dont forget about your appointment scheduled for tomorrow!</h1>
+                             <h1>Don't forget about your appointment scheduled for tomorrow!</h1>
                              <p>Appointment with Dr. {appointment.Doctor.FirstName + ' ' + appointment.Doctor.LastName} at {appointment.StartDate}</p>
                              """;
-                
+
             await emailService.SendEmailAsync(appointment.Patient.Email, "Appointment Reminder", emailBody);
         }
     }

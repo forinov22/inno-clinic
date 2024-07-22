@@ -1,4 +1,6 @@
 ﻿using Appointments.Application.Appointments.Common;
+using Appointments.Application.Appointments.Exceptions;
+using Appointments.Application.Extensions;
 using Appointments.Application.Interfaces;
 using Auth.Domain.Exceptions;
 using MediatR;
@@ -12,12 +14,12 @@ internal class ApproveAppointmentCommandHandler(IUnitOfWork unitOfWork) : IReque
         var appointment = await unitOfWork.AppointmentRepository.GetByIdAsync(request.AppointmentId);
         if (appointment is null)
         {
-            throw new NotFoundException("Appointment not found");
+            throw new AppointmentNotFoundException();
         }
 
         appointment.IsApproved = true;
         await unitOfWork.SaveAllAsync();
 
-        return appointment.MapToDto();
+        return appointment.ToAppointmentResult();
     }
 }

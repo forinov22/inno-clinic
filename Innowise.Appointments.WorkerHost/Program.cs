@@ -12,8 +12,9 @@ builder.Services.AddHttpClient();
 builder.Services.AddHostedService<AppointmentNotificationBackgroundService>();
 builder.Services
        .AddApplication()
-       .AddInfrastructure(builder.Configuration)
-       .AddEmail(builder.Configuration);
+       .AddPersistence(builder.Configuration)
+       .AddRedis(builder.Configuration)
+       .AddEmail(builder.Configuration.GetSection("EmailOptions").Bind);
 
 var app = builder.Build();
 

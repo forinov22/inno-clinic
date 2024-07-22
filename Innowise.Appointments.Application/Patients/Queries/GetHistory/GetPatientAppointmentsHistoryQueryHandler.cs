@@ -1,4 +1,5 @@
 ﻿using Appointments.Application.Appointments.Common;
+using Appointments.Application.Extensions;
 using Appointments.Application.Interfaces;
 using MediatR;
 
@@ -9,6 +10,6 @@ internal class GetPatientAppointmentsHistoryQueryHandler(IUnitOfWork unitOfWork)
     public async Task<IEnumerable<AppointmentResult>> Handle(GetPatientAppointmentsHistoryQuery request, CancellationToken cancellationToken)
     {
         var appointments = await unitOfWork.AppointmentRepository.GetPatientHistoryAsync(request.PatientId);
-        return appointments.Select(appointment => appointment.MapToDto()).ToList();
+        return appointments.Select(appointment => appointment.ToAppointmentResult()).ToList();
     }
 }

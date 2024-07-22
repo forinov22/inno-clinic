@@ -1,4 +1,5 @@
-﻿using Appointments.Application.Interfaces;
+﻿using Appointments.Application.Appointments.Exceptions;
+using Appointments.Application.Interfaces;
 using Auth.Domain.Exceptions;
 using MediatR;
 
@@ -11,7 +12,7 @@ internal class CancelAppointmentCommandHandler(IUnitOfWork unitOfWork) : IReques
         var appointment = await unitOfWork.AppointmentRepository.GetByIdAsync(request.AppointmentId);
         if (appointment is null)
         {
-            throw new NotFoundException("Appointment not found");
+            throw new AppointmentNotFoundException();
         }
 
         unitOfWork.AppointmentRepository.Remove(appointment);
