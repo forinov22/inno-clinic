@@ -12,8 +12,6 @@ namespace Appointments.Application.Appointments.Commands.UpdateResult;
 
 public class UpdateAppointmentResultCommandHandler(
     IUnitOfWork unitOfWork,
-    IEmailService emailService,
-    IPdfService pdfService,
     IPublishEndpoint publishEndpoint) : IRequestHandler<UpdateAppointmentResultCommand, ResultResult>
 {
     public async Task<ResultResult> Handle(UpdateAppointmentResultCommand request, CancellationToken cancellationToken)
