@@ -15,7 +15,7 @@ public class DoctorProfileCreatedCommandHandler(IUnitOfWork unitOfWork) : IReque
             LastName = request.LastName,
             MiddleName = request.MiddleName
         };
-        
+
         unitOfWork.DoctorRepository.Add(doctor);
         await unitOfWork.SaveAllAsync();
     }

@@ -1,5 +1,5 @@
-using Innowise.Common.Messages;
 using Innowise.Appointments.RmqHost.Extensions;
+using Innowise.Common.Messages;
 using MassTransit;
 using MediatR;
 

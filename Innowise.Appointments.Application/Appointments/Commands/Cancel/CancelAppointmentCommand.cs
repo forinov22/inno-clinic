@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 
 namespace Appointments.Application.Appointments.Commands.Cancel;
 

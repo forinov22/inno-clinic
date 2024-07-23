@@ -1,4 +1,4 @@
-﻿namespace Appointments.Application.Interfaces.HttpClients.Services;
+namespace Appointments.Application.Interfaces.HttpClients.Services;
 
 public interface IServiceHttpClient
 {

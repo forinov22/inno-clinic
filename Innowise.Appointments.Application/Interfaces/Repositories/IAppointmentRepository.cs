@@ -1,4 +1,4 @@
-﻿using Appointments.Domain.Entities;
+using Appointments.Domain.Entities;
 
 namespace Appointments.Application.Interfaces.Repositories;
 
@@ -10,6 +10,6 @@ public interface IAppointmentRepository
     Task<IEnumerable<Appointment>> GetPatientHistoryAsync(Guid patientId);
     Task<IEnumerable<Appointment>> GetAllStartingTomorrowAsync();
     Task<Appointment?> GetByIdAsync(Guid appointmentId);
-    void Add(Appointment  appointment);
+    void Add(Appointment appointment);
     void Remove(Appointment appointment);
 }

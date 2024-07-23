@@ -1,4 +1,4 @@
-﻿namespace Innowise.Common.Messages;
+namespace Innowise.Common.Messages;
 
 public class DoctorProfileCreated
 {

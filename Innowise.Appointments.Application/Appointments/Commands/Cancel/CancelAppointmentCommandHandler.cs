@@ -1,4 +1,4 @@
-﻿using Appointments.Application.Appointments.Exceptions;
+using Appointments.Application.Appointments.Exceptions;
 using Appointments.Application.Interfaces;
 using MediatR;
 

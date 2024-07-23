@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using Innowise.Common.Behaviours;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;

@@ -16,7 +16,7 @@ public class PatientProfileCreatedCommandHandler(IUnitOfWork unitOfWork) : IRequ
             MiddleName = request.MiddleName,
             Email = request.Email
         };
-        
+
         unitOfWork.PatientRepository.Add(patient);
         await unitOfWork.SaveAllAsync();
     }

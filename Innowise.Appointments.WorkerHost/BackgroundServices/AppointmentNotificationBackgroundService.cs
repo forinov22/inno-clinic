@@ -13,7 +13,7 @@ public class AppointmentNotificationBackgroundService(IServiceScopeFactory servi
             var sender = scope.ServiceProvider.GetRequiredService<ISender>();
 
             await sender.Send(new NotifyUpcomingAppointmentsCommand(), stoppingToken);
-            
+
             await Task.Delay(TimeSpan.FromDays(1), stoppingToken);
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace Innowise.Common.Exceptions;
+namespace Innowise.Common.Exceptions;
 
 public class BadRequestException : Exception
 {

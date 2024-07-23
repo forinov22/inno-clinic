@@ -1,4 +1,4 @@
-﻿using Appointments.Application.Doctors.Common;
+using Appointments.Application.Doctors.Common;
 using MediatR;
 
 namespace Appointments.Application.Doctors.Queries.GetFreeForDoctor;

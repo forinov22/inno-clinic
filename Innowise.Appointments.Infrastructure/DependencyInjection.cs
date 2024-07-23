@@ -1,4 +1,4 @@
-﻿using Appointments.Application.Interfaces;
+using Appointments.Application.Interfaces;
 using Appointments.Application.Interfaces.HttpClients.Services;
 using Appointments.Infrastructure.HttpClients;
 using Appointments.Infrastructure.Pdf;

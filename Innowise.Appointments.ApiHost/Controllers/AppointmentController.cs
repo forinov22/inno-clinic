@@ -1,4 +1,4 @@
-﻿using Appointments.Application.Appointments.Commands.Approve;
+using Appointments.Application.Appointments.Commands.Approve;
 using Appointments.Application.Appointments.Commands.Cancel;
 using Appointments.Application.Appointments.Common;
 using Appointments.Application.Appointments.Queries.GetById;

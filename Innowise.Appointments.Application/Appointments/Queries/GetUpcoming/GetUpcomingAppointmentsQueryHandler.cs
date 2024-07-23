@@ -1,4 +1,4 @@
-﻿using Appointments.Application.Appointments.Common;
+using Appointments.Application.Appointments.Common;
 using Appointments.Application.Extensions;
 using Appointments.Application.Interfaces;
 using MediatR;

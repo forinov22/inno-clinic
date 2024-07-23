@@ -1,4 +1,4 @@
-﻿using Appointments.Domain.Entities;
+using Appointments.Domain.Entities;
 
 namespace Appointments.Application.Interfaces.Repositories;
 

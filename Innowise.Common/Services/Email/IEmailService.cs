@@ -1,4 +1,4 @@
-﻿namespace Innowise.Common.Services.Email;
+namespace Innowise.Common.Services.Email;
 
 public interface IEmailService
 {

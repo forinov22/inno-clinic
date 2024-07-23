@@ -1,4 +1,4 @@
-﻿namespace Appointments.Application.Doctors.Common;
+namespace Appointments.Application.Doctors.Common;
 
 public class TimeSlotResult(TimeOnly start, TimeOnly end, bool isAvailable = true)
 {

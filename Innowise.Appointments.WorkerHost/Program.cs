@@ -1,8 +1,8 @@
 using Appointments.Application;
 using Appointments.Infrastructure;
-using Innowise.Common.Services;
 using Innowise.Appointments.WorkerHost;
 using Innowise.Appointments.WorkerHost.BackgroundServices;
+using Innowise.Common.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,28 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Appointments.Infrastructure.Persistence.Migrations
+namespace Appointments.Infrastructure.Persistence.Migrations;
+
+/// <inheritdoc />
+public partial class RenamedTimeSlotSizeColumn : Migration
 {
     /// <inheritdoc />
-    public partial class RenamedTimeSlotSizeColumn : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "ServiceCategoryTimeSlotSize",
-                table: "Service",
-                newName: "TimeSlotSize");
-        }
+        migrationBuilder.RenameColumn(
+            name: "ServiceCategoryTimeSlotSize",
+            table: "Service",
+            newName: "TimeSlotSize");
+    }
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "TimeSlotSize",
-                table: "Service",
-                newName: "ServiceCategoryTimeSlotSize");
-        }
+    /// <inheritdoc />
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.RenameColumn(
+            name: "TimeSlotSize",
+            table: "Service",
+            newName: "ServiceCategoryTimeSlotSize");
     }
 }

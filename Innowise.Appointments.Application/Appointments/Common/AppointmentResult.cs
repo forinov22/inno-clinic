@@ -1,4 +1,4 @@
-﻿namespace Appointments.Application.Appointments.Common;
+namespace Appointments.Application.Appointments.Common;
 
 public record AppointmentResult(
     Guid Id,

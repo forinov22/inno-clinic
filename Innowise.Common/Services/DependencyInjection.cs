@@ -1,13 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Net.Mail;
 using System.Net;
-using Innowise.Common.Services.Email;
-using Microsoft.Extensions.Configuration;
-using Innowise.Common.Services.Authentication;
+using System.Net.Mail;
 using Innowise.Common.Extensions;
+using Innowise.Common.Services.Authentication;
+using Innowise.Common.Services.Email;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Innowise.Common.Services;
 

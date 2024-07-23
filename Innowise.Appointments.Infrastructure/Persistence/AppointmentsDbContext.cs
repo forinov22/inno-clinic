@@ -1,4 +1,4 @@
-﻿using Appointments.Domain.Entities;
+using Appointments.Domain.Entities;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 

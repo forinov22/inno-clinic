@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using Appointments.Application.Appointments.Common;
 using Appointments.Application.Doctors.Exceptions;
 using Appointments.Application.Extensions;
