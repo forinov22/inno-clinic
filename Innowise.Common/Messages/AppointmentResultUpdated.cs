@@ -4,6 +4,6 @@ namespace Innowise.Common.Messages;
 
 public class AppointmentResultUpdated
 {
-    public string Email { get; set; }
-    public Result Result { get; set; }
+    public string Email { get; set; } = string.Empty;
+    public Result Result { get; set; } = null!;
 }

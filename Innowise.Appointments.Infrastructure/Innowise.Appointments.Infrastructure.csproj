@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Appointments.Infrastructure</RootNamespace>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +26,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Innowise.Appointments.Application\Innowise.Appointments.Application.csproj" />
     <ProjectReference Include="..\Innowise.Appointments.Domain\Innowise.Appointments.Domain.csproj" />
-    <ProjectReference Include="..\Innowise.Infrastructure.Messages\Innowise.Infrastructure.Messages.csproj" />
   </ItemGroup>
 
 </Project>

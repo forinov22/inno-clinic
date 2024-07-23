@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Appointments.API</RootNamespace>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,9 +21,6 @@
     <ProjectReference Include="..\Innowise.Appointments.Application\Innowise.Appointments.Application.csproj" />
     <ProjectReference Include="..\Innowise.Appointments.Contracts\Innowise.Appointments.Contracts.csproj" />
     <ProjectReference Include="..\Innowise.Appointments.Infrastructure\Innowise.Appointments.Infrastructure.csproj" />
-    <ProjectReference Include="..\Innowise.Infrastructure.Exceptions\Innowise.Infrastructure.Exceptions.csproj" />
-    <ProjectReference Include="..\Innowise.Infrastructure.Services\Innowise.Infrastructure.Services.csproj" />
-    <ProjectReference Include="..\Offices.Application\Offices.Application.csproj" />
     <ProjectReference Include="..\Innowise.Common\Innowise.Common.csproj" />
   </ItemGroup>
 
