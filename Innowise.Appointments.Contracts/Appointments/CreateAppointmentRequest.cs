@@ -1,13 +1,6 @@
 namespace Innowise.Appointments.Contracts.Appointments;
 
-/*
- * Guid PatientId,
-    Guid DoctorId,
-    Guid ServiceId,
-    DateTime StartDate
- */
-
-public record CreateAppointmentContract(
+public record CreateAppointmentRequest(
     Guid PatientId,
     Guid DoctorId,
     Guid ServiceId,

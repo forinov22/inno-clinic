@@ -1,6 +1,6 @@
 namespace Innowise.Appointments.Contracts.Appointments;
 
-public record UpdateAppointmentResultContract(
+public record UpdateAppointmentResultRequest(
     string Complaints,
     string Conclusion,
     string Recommendations);

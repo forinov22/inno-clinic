@@ -10,9 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace Appointments.Infrastructure.Persistence;
 
 public class UnitOfWork(
-    AppointmentsDbContext context,
-    HttpClient httpClient,
-    IConfiguration configuration)
+    AppointmentsDbContext context)
     : IUnitOfWork
 {
     private readonly Lazy<IAppointmentRepository>
@@ -22,15 +20,10 @@ public class UnitOfWork(
     private readonly Lazy<IPatientRepository> _patientRepository = new(() => new PatientRepository(context));
     private readonly Lazy<IResultRepository> _resultRepository = new(() => new ResultRepository(context));
 
-    // private readonly Lazy<IServiceHttpClient> _serviceRepository =
-    //     new(() => new ServiceHttpClient(httpClient, distributedCache, configuration, logger));
-
-
     public IAppointmentRepository AppointmentRepository => _appointmentRepository.Value;
     public IDoctorRepository DoctorRepository => _doctorRepository.Value;
     public IPatientRepository PatientRepository => _patientRepository.Value;
     public IResultRepository ResultRepository => _resultRepository.Value;
-    // public IServiceHttpClient ServiceRepository => _serviceRepository.Value;
 
     public async Task SaveAllAsync()
     {

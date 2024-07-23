@@ -1,18 +1,15 @@
 namespace Innowise.Appointments.Contracts.Appointments;
 
-public record ResultContract(
+public record AppointmentResponse(
     Guid Id,
-    string Complaints,
-    string Recommendations,
-    Guid AppointmentId,
-    DateTime DateTime,
     Guid PatientId,
     string PatientFirstName,
     string PatientLastName,
     string? PatientMiddleName,
-    Guid DoctorId,
+    Guid ServiceId,
+    string ServiceName,
     string DoctorFirstName,
     string DoctorLastName,
     string? DoctorMiddleName,
-    Guid ServiceId,
-    string ServiceName);
+    DateTime DateStart,
+    DateTime DateEnd);

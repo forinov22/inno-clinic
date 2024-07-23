@@ -12,9 +12,9 @@ namespace Appointments.API.Controllers;
 public class PatientController(ISender sender)
 {
     [HttpGet("{id:guid}/appointments")]
-    public async Task<ActionResult<IEnumerable<AppointmentContract>>> ListHistory([FromRoute] Guid id)
+    public async Task<ActionResult<IEnumerable<AppointmentResponse>>> ListHistory([FromRoute] Guid id)
     {
         var appointments = await sender.Send(new GetPatientAppointmentsHistoryQuery(id));
-        return appointments.Select(appointment => appointment.ToAppointmentContract()).ToList();
+        return appointments.Select(appointment => appointment.ToAppointmentResponse()).ToList();
     }
 }

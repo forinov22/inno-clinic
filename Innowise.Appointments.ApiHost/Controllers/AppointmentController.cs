@@ -16,31 +16,31 @@ namespace Appointments.API.Controllers;
 public class AppointmentController(ISender sender) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<AppointmentContract>>> ListUpcoming()
+    public async Task<ActionResult<IEnumerable<AppointmentResponse>>> ListUpcoming()
     {
         var appointments = await sender.Send(new GetUpcomingAppointmentsQuery());
-        return appointments.Select(appointment => appointment.ToAppointmentContract()).ToList();
+        return appointments.Select(appointment => appointment.ToAppointmentResponse()).ToList();
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<AppointmentContract>> GetById([FromRoute] Guid id)
+    public async Task<ActionResult<AppointmentResponse>> GetById([FromRoute] Guid id)
     {
         var appointment = await sender.Send(new GetAppointmentByIdQuery(id));
-        return appointment.ToAppointmentContract();
+        return appointment.ToAppointmentResponse();
     }
 
     [HttpPost]
-    public async Task<ActionResult<AppointmentContract>> Create(
-        [FromBody] CreateAppointmentContract createAppointmentContract)
+    public async Task<ActionResult<AppointmentResponse>> Create(
+        [FromBody] CreateAppointmentRequest createAppointment)
     {
-        var appointment = await sender.Send(createAppointmentContract.ToCreateAppointmentCommand());
-        return CreatedAtAction(nameof(GetById), new { id = appointment.Id }, appointment.ToAppointmentContract());
+        var appointment = await sender.Send(createAppointment.ToCreateAppointmentCommand());
+        return CreatedAtAction(nameof(GetById), new { id = appointment.Id }, appointment.ToAppointmentResponse());
     }
 
     [HttpPost("{id:guid}:approve")]
-    public async Task<ActionResult<AppointmentContract>> Approve([FromRoute] Guid id)
+    public async Task<ActionResult<AppointmentResponse>> Approve([FromRoute] Guid id)
     {
-        var appointment = await sender.Send(new ApproveAppointmentCommand(id));
+        await sender.Send(new ApproveAppointmentCommand(id));
         return NoContent();
     }
 
@@ -52,16 +52,16 @@ public class AppointmentController(ISender sender) : ControllerBase
     }
 
     [HttpGet("{appointmentId:guid}/result")]
-    public async Task<ActionResult<ResultContract>> GetAppointmentResultById([FromRoute] Guid appointmentId)
+    public async Task<ActionResult<ResultResponse>> GetAppointmentResultById([FromRoute] Guid appointmentId)
     {
         var result = await sender.Send(new GetResultByAppointmentIdQuery(appointmentId));
-        return result.ToResultContract();
+        return result.ToResultResponse();
     }
 
     [HttpPatch("{appointmentId:guid}/result")]
-    public async Task<ActionResult<ResultContract>> UpdateAppointmentResult([FromRoute] Guid appointmentId, [FromBody] UpdateAppointmentResultContract updateAppointmentResultContract)
+    public async Task<ActionResult<ResultResponse>> UpdateAppointmentResult([FromRoute] Guid appointmentId, [FromBody] UpdateAppointmentResultRequest updateAppointmentResult)
     {
-        var result = await sender.Send(updateAppointmentResultContract.ToUpdateAppointmentResultCommand(appointmentId));
-        return CreatedAtAction(nameof(GetAppointmentResultById), new { appointmentId = result.AppointmentId }, result.ToResultContract());
+        var result = await sender.Send(updateAppointmentResult.ToUpdateAppointmentResultCommand(appointmentId));
+        return CreatedAtAction(nameof(GetAppointmentResultById), new { appointmentId = result.AppointmentId }, result.ToResultResponse());
     }
 }

@@ -7,9 +7,9 @@ using MediatR;
 
 namespace Appointments.Application.Appointments.Commands.Approve;
 
-internal class ApproveAppointmentCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<ApproveAppointmentCommand, AppointmentResult>
+internal class ApproveAppointmentCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<ApproveAppointmentCommand>
 {
-    public async Task<AppointmentResult> Handle(ApproveAppointmentCommand request, CancellationToken cancellationToken)
+    public async Task Handle(ApproveAppointmentCommand request, CancellationToken cancellationToken)
     {
         var appointment = await unitOfWork.AppointmentRepository.GetByIdAsync(request.AppointmentId);
         if (appointment is null)
@@ -19,7 +19,5 @@ internal class ApproveAppointmentCommandHandler(IUnitOfWork unitOfWork) : IReque
 
         appointment.IsApproved = true;
         await unitOfWork.SaveAllAsync();
-
-        return appointment.ToAppointmentResult();
     }
 }

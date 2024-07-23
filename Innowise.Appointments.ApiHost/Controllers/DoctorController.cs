@@ -14,10 +14,10 @@ namespace Appointments.API.Controllers;
 public class DoctorController(ISender sender)
 {
     [HttpGet("{id:guid}/appointments")]
-    public async Task<ActionResult<IEnumerable<AppointmentContract>>> ListUpcoming([FromRoute] Guid id)
+    public async Task<ActionResult<IEnumerable<AppointmentResponse>>> ListUpcoming([FromRoute] Guid id)
     {
         var appointments = await sender.Send(new GetDoctorUpcomingAppointmentsQuery(id));
-        return appointments.Select(appointment => appointment.ToAppointmentContract()).ToList();
+        return appointments.Select(appointment => appointment.ToAppointmentResponse()).ToList();
     }
 
     [HttpGet("{id:guid}/schedule")]

@@ -12,14 +12,14 @@ public class ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> lo
     public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception,
                                                 CancellationToken cancellationToken)
     {
-        logger.LogError("Error occured: {Message}", exception.Message);
+        logger.LogError("Error occurred: {Message}", exception.Message);
 
         var statusCode = exception switch
         {
-            BadRequestException => (int)HttpStatusCode.BadRequest,
-            UnauthorizedException => (int)HttpStatusCode.Unauthorized,
-            NotFoundException => (int)HttpStatusCode.NotFound,
-            _ => (int)HttpStatusCode.InternalServerError
+            BadRequestException => (int) HttpStatusCode.BadRequest,
+            UnauthorizedException => (int) HttpStatusCode.Unauthorized,
+            NotFoundException => (int) HttpStatusCode.NotFound,
+            _ => (int) HttpStatusCode.InternalServerError
         };
 
         var exceptionType = exception switch

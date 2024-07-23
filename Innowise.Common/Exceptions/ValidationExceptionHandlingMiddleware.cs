@@ -16,7 +16,7 @@ public class ValidationExceptionHandlingMiddleware(ILogger<ValidationExceptionHa
             return false;
         }
 
-        logger.LogError("Error occured: {Message}", validationException.Message);
+        logger.LogError("Error occurred: {Message}", validationException.Message);
 
         var problemDetails = new ProblemDetails
         {
