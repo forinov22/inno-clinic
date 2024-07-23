@@ -3,9 +3,8 @@ using Appointments.Application.Appointments.Exceptions;
 using Appointments.Application.Extensions;
 using Appointments.Application.Interfaces;
 using Appointments.Domain.Entities;
-using Auth.Domain.Exceptions;
-using InnoClinic.Contracts;
-using InnoClinic.Services.Email;
+using Innowise.Common.Messages;
+using Innowise.Common.Services.Email;
 using MassTransit;
 using MediatR;
 

@@ -1,6 +1,6 @@
 using Appointments.Application;
 using Appointments.Infrastructure;
-using InnoClinic.Services;
+using Innowise.Common.Services;
 using Innowise.Appointments.WorkerHost;
 using Innowise.Appointments.WorkerHost.BackgroundServices;
 

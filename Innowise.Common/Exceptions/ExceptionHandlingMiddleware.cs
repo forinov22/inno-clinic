@@ -1,12 +1,11 @@
 using System.Net;
 using System.Text.Json;
-using Auth.Domain.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace InnoClinic.Exceptions;
+namespace Innowise.Common.Exceptions;
 
 public class ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> logger) : IExceptionHandler
 {

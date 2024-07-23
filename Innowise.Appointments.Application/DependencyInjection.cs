@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using InnoClinic.Behaviours;
+using Innowise.Common.Behaviours;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 

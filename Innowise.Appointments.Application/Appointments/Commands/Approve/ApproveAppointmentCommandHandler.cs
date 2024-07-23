@@ -2,7 +2,7 @@
 using Appointments.Application.Appointments.Exceptions;
 using Appointments.Application.Extensions;
 using Appointments.Application.Interfaces;
-using Auth.Domain.Exceptions;
+using Appointments.Domain.Entities;
 using MediatR;
 
 namespace Appointments.Application.Appointments.Commands.Approve;

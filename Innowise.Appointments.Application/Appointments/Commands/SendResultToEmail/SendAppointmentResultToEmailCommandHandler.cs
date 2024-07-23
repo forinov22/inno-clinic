@@ -1,5 +1,5 @@
 using Appointments.Application.Interfaces;
-using InnoClinic.Services.Email;
+using Innowise.Common.Services.Email;
 using MediatR;
 
 namespace Appointments.Application.Appointments.Commands.SendResultToEmail;

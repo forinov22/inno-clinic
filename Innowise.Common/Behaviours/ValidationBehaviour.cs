@@ -2,7 +2,7 @@
 using MediatR;
 using ValidationException = FluentValidation.ValidationException;
 
-namespace InnoClinic.Behaviours;
+namespace Innowise.Common.Behaviours;
 
 public sealed class ValidationBehaviour<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
     : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull

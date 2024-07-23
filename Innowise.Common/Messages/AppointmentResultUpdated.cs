@@ -1,6 +1,6 @@
 using Appointments.Domain.Entities;
 
-namespace InnoClinic.Contracts;
+namespace Innowise.Common.Messages;
 
 public class AppointmentResultUpdated
 {

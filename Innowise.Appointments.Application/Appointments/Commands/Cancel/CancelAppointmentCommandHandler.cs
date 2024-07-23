@@ -1,6 +1,5 @@
 ﻿using Appointments.Application.Appointments.Exceptions;
 using Appointments.Application.Interfaces;
-using Auth.Domain.Exceptions;
 using MediatR;
 
 namespace Appointments.Application.Appointments.Commands.Cancel;

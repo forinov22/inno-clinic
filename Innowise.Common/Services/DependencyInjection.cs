@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Net.Mail;
 using System.Net;
-using InnoClinic.Services.Email;
+using Innowise.Common.Services.Email;
 using Microsoft.Extensions.Configuration;
-using InnoClinic.Authentication;
+using Innowise.Common.Services.Authentication;
 using Innowise.Common.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 
-namespace InnoClinic.Services;
+namespace Innowise.Common.Services;
 
 public static class DependencyInjection
 {

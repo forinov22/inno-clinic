@@ -23,6 +23,7 @@
     <ProjectReference Include="..\Innowise.Infrastructure.Exceptions\Innowise.Infrastructure.Exceptions.csproj" />
     <ProjectReference Include="..\Innowise.Infrastructure.Services\Innowise.Infrastructure.Services.csproj" />
     <ProjectReference Include="..\Offices.Application\Offices.Application.csproj" />
+    <ProjectReference Include="..\Innowise.Common\Innowise.Common.csproj" />
   </ItemGroup>
 
 </Project>

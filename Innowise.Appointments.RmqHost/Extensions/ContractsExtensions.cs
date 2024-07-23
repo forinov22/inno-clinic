@@ -3,7 +3,7 @@ using Appointments.Application.Appointments.Commands.UpdateResult;
 using Appointments.Application.Doctors.Commands.ProfileCreated;
 using Appointments.Application.Patients.Commands.ProfileCreated;
 using Appointments.Application.Patients.Commands.ProfileLinkedToAccount;
-using InnoClinic.Contracts;
+using Innowise.Common.Messages;
 
 namespace Innowise.Appointments.RmqHost.Extensions;
 

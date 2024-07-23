@@ -1,5 +1,5 @@
 using Appointments.Application.Services.Commands.ServicesUpdated;
-using InnoClinic.Contracts;
+using Innowise.Common.Messages;
 using MassTransit;
 using MediatR;
 

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace InnoClinic.Exceptions;
+namespace Innowise.Common.Exceptions;
 
 public class ValidationExceptionHandlingMiddleware(ILogger<ValidationExceptionHandlingMiddleware> logger) : IExceptionHandler
 {

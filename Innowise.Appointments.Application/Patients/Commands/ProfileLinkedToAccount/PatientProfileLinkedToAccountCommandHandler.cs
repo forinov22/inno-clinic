@@ -1,7 +1,6 @@
 using Appointments.Application.Interfaces;
 using Appointments.Application.Patients.Commands.ProfileCreated;
 using Appointments.Application.Patients.Exceptions;
-using Auth.Domain.Exceptions;
 using MediatR;
 
 namespace Appointments.Application.Patients.Commands.ProfileLinkedToAccount;

@@ -1,8 +1,8 @@
 using Appointments.Application;
 using Appointments.Infrastructure;
 using Appointments.Infrastructure.Persistence;
-using InnoClinic.Exceptions;
-using InnoClinic.Services;
+using Innowise.Common.Exceptions;
+using Innowise.Common.Services;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

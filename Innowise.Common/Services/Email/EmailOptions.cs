@@ -1,4 +1,4 @@
-﻿namespace InnoClinic.Services.Email;
+﻿namespace Innowise.Common.Services.Email;
 
 public class EmailOptions
 {

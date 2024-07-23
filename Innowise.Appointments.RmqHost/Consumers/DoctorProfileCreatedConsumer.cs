@@ -1,4 +1,4 @@
-using InnoClinic.Contracts;
+using Innowise.Common.Messages;
 using Innowise.Appointments.RmqHost.Extensions;
 using MassTransit;
 using MediatR;

@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace InnoClinic.Authentication;
+namespace Innowise.Common.Services.Authentication;
 
 public class JwtOptions
 {
