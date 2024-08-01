@@ -20,6 +20,7 @@ builder.Services
        .AddApplication()
        .AddPersistence(builder.Configuration)
        .AddHttpClients(builder.Configuration)
+       .AddMassTransit()
        .AddPolly()
        .AddRedis(builder.Configuration)
        .AddPdf()

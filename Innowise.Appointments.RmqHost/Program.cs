@@ -20,7 +20,11 @@ builder.Services.AddMassTransit(config =>
     config.AddConsumer<PatientProfileLinkedToAccountConsumer>();
     config.AddConsumer<ServicesUpdatedConsumer>();
 
-    config.UsingRabbitMq((context, cfg) => { cfg.ConfigureEndpoints(context); });
+    config.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.UseMessageRetry(r => r.Immediate(5));
+        cfg.ConfigureEndpoints(context);
+    });
 });
 
 builder.Services.AddDbContext<OutboxDbContext>(options =>
