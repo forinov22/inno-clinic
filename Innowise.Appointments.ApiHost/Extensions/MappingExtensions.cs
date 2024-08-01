@@ -3,7 +3,7 @@ using Appointments.Application.Appointments.Commands.UpdateResult;
 using Appointments.Application.Appointments.Common;
 using Innowise.Appointments.Contracts.Appointments;
 
-namespace Innowise.Appointments.Contracts.Extensions;
+namespace Innowise.Appointments.ApiHost.Extensions;
 
 public static class MappingExtensions
 {

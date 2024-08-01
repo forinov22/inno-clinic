@@ -3,7 +3,7 @@ using Appointments.Application.Doctors.Common;
 using Appointments.Application.Doctors.Queries.GetFreeForDoctor;
 using Appointments.Application.Doctors.Queries.GetUpcoming;
 using Innowise.Appointments.Contracts.Appointments;
-using Innowise.Appointments.Contracts.Extensions;
+using Innowise.Appointments.ApiHost.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

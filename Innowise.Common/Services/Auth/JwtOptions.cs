@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Innowise.Common.Services.Authentication;
+namespace Innowise.Common.Services.Auth;
 
 public class JwtOptions
 {

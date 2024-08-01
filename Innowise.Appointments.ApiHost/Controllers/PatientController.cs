@@ -1,7 +1,6 @@
-using Appointments.Application.Appointments.Common;
 using Appointments.Application.Patients.Queries.GetHistory;
 using Innowise.Appointments.Contracts.Appointments;
-using Innowise.Appointments.Contracts.Extensions;
+using Innowise.Appointments.ApiHost.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

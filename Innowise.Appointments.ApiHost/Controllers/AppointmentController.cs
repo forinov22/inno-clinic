@@ -5,7 +5,7 @@ using Appointments.Application.Appointments.Queries.GetById;
 using Appointments.Application.Appointments.Queries.GetResultByAppointmentId;
 using Appointments.Application.Appointments.Queries.GetUpcoming;
 using Innowise.Appointments.Contracts.Appointments;
-using Innowise.Appointments.Contracts.Extensions;
+using Innowise.Appointments.ApiHost.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
