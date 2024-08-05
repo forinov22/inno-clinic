@@ -8,7 +8,7 @@ public class DoctorProfileCreatedCommandHandler(IUnitOfWork unitOfWork) : IReque
 {
     public async Task Handle(DoctorProfileCreatedCommand request, CancellationToken cancellationToken)
     {
-        var doctor = new Doctor()
+        var doctor = new Domain.Entities.Doctor()
         {
             ExternalId = request.ProfileId,
             FirstName = request.FirstName,

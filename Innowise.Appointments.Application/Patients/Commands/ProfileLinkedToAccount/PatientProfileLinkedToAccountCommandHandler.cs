@@ -1,13 +1,12 @@
 using Appointments.Application.Interfaces;
-using Appointments.Application.Patients.Commands.ProfileCreated;
 using Appointments.Application.Patients.Exceptions;
 using MediatR;
 
 namespace Appointments.Application.Patients.Commands.ProfileLinkedToAccount;
 
-public class PatientProfileLinkedToAccountCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<PatientProfileCreatedCommand>
+public class PatientProfileLinkedToAccountCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<PatientProfileLinkedToAccountCommand>
 {
-    public async Task Handle(PatientProfileCreatedCommand request, CancellationToken cancellationToken)
+    public async Task Handle(PatientProfileLinkedToAccountCommand request, CancellationToken cancellationToken)
     {
         var patient = await unitOfWork.PatientRepository.GetByIdAsync(request.ProfileId);
         if (patient is null)

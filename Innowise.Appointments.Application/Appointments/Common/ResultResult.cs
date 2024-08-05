@@ -3,6 +3,7 @@ namespace Appointments.Application.Appointments.Common;
 public record ResultResult(
     Guid Id,
     string Complaints,
+    string Conclusion,
     string Recommendations,
     Guid AppointmentId,
     DateTime DateTime,

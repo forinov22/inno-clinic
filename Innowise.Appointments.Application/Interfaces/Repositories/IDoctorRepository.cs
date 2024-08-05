@@ -4,6 +4,6 @@ namespace Appointments.Application.Interfaces.Repositories;
 
 public interface IDoctorRepository
 {
-    Task<Doctor?> GetByIdAsync(Guid doctorId);
-    void Add(Doctor doctor);
+    Task<Domain.Entities.Doctor?> GetByIdAsync(Guid doctorId);
+    void Add(Domain.Entities.Doctor doctor);
 }

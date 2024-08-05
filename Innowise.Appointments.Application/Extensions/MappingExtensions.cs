@@ -29,6 +29,7 @@ public static class MappingExtensions
         return new ResultResult(
             result.Id,
             result.Complaints,
+            result.Conclusion,
             result.Recommendations,
             result.AppointmentId,
             result.DateTime,

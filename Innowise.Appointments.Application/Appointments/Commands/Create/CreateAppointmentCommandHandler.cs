@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json;
 using Appointments.Application.Appointments.Common;
 using Appointments.Application.Doctors.Exceptions;
@@ -20,7 +21,8 @@ internal class CreateAppointmentCommandHandler(
     ResiliencePipelineProvider<string> pipelineProvider)
     : IRequestHandler<CreateAppointmentCommand, AppointmentResult>
 {
-    public async Task<AppointmentResult> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
+    public async Task<AppointmentResult> Handle(CreateAppointmentCommand request,
+        CancellationToken cancellationToken)
     {
         var doctor = await unitOfWork.DoctorRepository.GetByIdAsync(request.DoctorId);
         var patient = await unitOfWork.PatientRepository.GetByIdAsync(request.PatientId);
@@ -59,20 +61,19 @@ internal class CreateAppointmentCommandHandler(
     private async Task<Service?> FetchService(Guid serviceId)
     {
         var serviceKey = $"service-{serviceId}";
-        var serviceString = await distributedCache.GetStringAsync(serviceKey);
+        var serviceBytes = await distributedCache.GetAsync(serviceKey);
 
-        if (serviceString is null)
+        if (serviceBytes is null)
         {
             var pipeline = pipelineProvider.GetPipeline("services-client");
-            var serviceResponse = await pipeline.ExecuteAsync(async (token) =>
-            {
-                return await serviceHttpClient.GetServiceByIdAsync(new ServiceRequest(serviceId));
-            });
+            var serviceResponse = await pipeline.ExecuteAsync(async (token)
+                => await serviceHttpClient.GetServiceByIdAsync(new ServiceRequest(serviceId)));
 
             await distributedCache.SetStringAsync(serviceKey, JsonSerializer.Serialize(serviceResponse));
             return serviceResponse?.ToService();
         }
 
+        var serviceString = Encoding.UTF8.GetString(serviceBytes);
         return JsonSerializer.Deserialize<Service>(serviceString);
     }
 }
