@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Innowise.Common\Innowise.Common.csproj" />
   </ItemGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="Innowise.Appointments.Tests.Integration" />
+    </ItemGroup>
+
 </Project>

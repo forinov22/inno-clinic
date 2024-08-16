@@ -13,7 +13,7 @@ using QuestPDF.Infrastructure;
 
 namespace Appointments.Infrastructure;
 
-public static class DependencyInjection
+public static class ВDependencyInjection
 {
     public static IServiceCollection AddMassTransit(this IServiceCollection services)
     {
@@ -51,7 +51,7 @@ public static class DependencyInjection
             client.BaseAddress =
                 new Uri(
                     configuration[
-                        "ServiceUrl:ServicesService:BaseUrl"] ??
+                        "ServiceUrls:ServicesService:BaseUrl"] ??
                     throw new Exception(
                         "ServicesService url is not provided"));
         });

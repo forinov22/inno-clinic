@@ -20,6 +20,7 @@ builder.Services
        .AddApplication()
        .AddPersistence(builder.Configuration)
        .AddHttpClients(builder.Configuration)
+       .AddMassTransit()
        .AddPolly()
        .AddRedis(builder.Configuration)
        .AddPdf()
@@ -45,6 +46,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-await DatabaseMigrationChecker.EnsureDatabaseIsFullyMigrated(app.Services);
+// await DatabaseMigrationChecker.EnsureDatabaseIsFullyMigrated(app.Services);
 
 app.Run();
+
+public partial class Program {}
