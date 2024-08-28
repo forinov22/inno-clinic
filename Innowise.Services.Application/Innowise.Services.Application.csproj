@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Services.Application</RootNamespace>
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
+      <PackageReference Include="MassTransit.Abstractions" Version="8.2.2" />
+      <PackageReference Include="MediatR" Version="12.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Innowise.Common\Innowise.Common.csproj" />
+      <ProjectReference Include="..\Innowise.Services.Domain\Innowise.Services.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
