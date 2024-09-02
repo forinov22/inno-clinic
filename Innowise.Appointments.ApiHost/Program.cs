@@ -46,8 +46,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-await DatabaseMigrationChecker.EnsureDatabaseIsFullyMigrated(app.Services);
+if (app.Environment.EnvironmentName != "Test")
+{
+    await DatabaseMigrationChecker.EnsureDatabaseIsFullyMigrated(app.Services);
+}
 
 app.Run();
 
-public partial class Program {}
+public partial class Program { }
