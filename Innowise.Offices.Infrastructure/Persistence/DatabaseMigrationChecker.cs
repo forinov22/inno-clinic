@@ -12,7 +12,7 @@ public static class DatabaseMigrationChecker
         var pendingMigrations = await context.Database.GetPendingMigrationsAsync();
         if (pendingMigrations.Any())
         {
-            throw new Exception("Database is not fully migrated for AppointmentsDbContext.");
+            throw new Exception("Database is not fully migrated for OfficesDbContext.");
         }
     }
 }

@@ -18,7 +18,6 @@ builder.Services.AddMassTransit(config =>
     config.AddConsumer<DoctorProfileCreatedConsumer>();
     config.AddConsumer<PatientProfileCreatedConsumer>();
     config.AddConsumer<PatientProfileLinkedToAccountConsumer>();
-    config.AddConsumer<ServicesUpdatedConsumer>();
 
     config.UsingRabbitMq((context, cfg) =>
     {

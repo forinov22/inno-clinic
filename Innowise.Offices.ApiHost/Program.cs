@@ -3,8 +3,6 @@ using Innowise.Common.Services;
 using Innowise.Offices.Application;
 using Innowise.Offices.Infrastructure;
 using Innowise.Offices.Infrastructure.Persistence;
-using Offices.Infrastructure;
-using Offices.Infrastructure.Persistence;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
