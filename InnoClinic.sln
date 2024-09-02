@@ -19,13 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Appointments.Worke
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Common", "Innowise.Common\Innowise.Common.csproj", "{A48CDEC8-F552-4B45-A445-3FF9B11B77F7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.ApiHost", "Offices.API\Innowise.Offices.ApiHost.csproj", "{891485AB-4EB8-401E-97FB-786F095A3070}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.ApiHost", "Innowise.Offices.ApiHost\Innowise.Offices.ApiHost.csproj", "{891485AB-4EB8-401E-97FB-786F095A3070}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.Application", "Offices.Application\Innowise.Offices.Application.csproj", "{0F0A3188-998F-4710-8DA3-A163D647B0BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.Application", "Innowise.Offices.Application\Innowise.Offices.Application.csproj", "{0F0A3188-998F-4710-8DA3-A163D647B0BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.Domain", "Offices.Domain\Innowise.Offices.Domain.csproj", "{36212E6B-1E03-4E17-92E1-996AB1BDAA6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.Domain", "Innowise.Offices.Domain\Innowise.Offices.Domain.csproj", "{36212E6B-1E03-4E17-92E1-996AB1BDAA6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.Infrastructure", "Offices.Infrastructure\Innowise.Offices.Infrastructure.csproj", "{E5B3B0B4-891A-4498-B125-94FDCA0DD4AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.Infrastructure", "Innowise.Offices.Infrastructure\Innowise.Offices.Infrastructure.csproj", "{E5B3B0B4-891A-4498-B125-94FDCA0DD4AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Offices.Contracts", "Innowise.Offices.Contracts\Innowise.Offices.Contracts.csproj", "{193111D1-7131-4685-942A-03AD1A40E9CD}"
 EndProject
