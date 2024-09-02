@@ -19,14 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Appointments.Worke
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innowise.Common", "Innowise.Common\Innowise.Common.csproj", "{A48CDEC8-F552-4B45-A445-3FF9B11B77F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innowise.Profiles.ApiHost", "Innowise.Profiles.ApiHost\Innowise.Profiles.ApiHost.csproj", "{A0640731-59D4-4480-9886-53C3A318C856}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innowise.Profiles.Application", "Innowise.Profiles.Application\Innowise.Profiles.Application.csproj", "{BB14F3D1-AD07-4DD8-B989-9FF77C6497BE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innowise.Profiles.Domain", "Innowise.Profiles.Domain\Innowise.Profiles.Domain.csproj", "{6F745935-0C97-431C-BB43-AB360E70F313}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innowise.Profiles.Infrastructure", "Innowise.Profiles.Infrastructure\Innowise.Profiles.Infrastructure.csproj", "{1F70814B-7C99-4CE8-82FE-68C89BA71F7E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innowise.Profiles.Contracts", "Innowise.Profiles.Contracts\Innowise.Profiles.Contracts.csproj", "{53393CD0-AF77-4844-BFAA-B67D41BFFC91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innowise.Profiles.RmqHost", "Innowise.Profiles.RmqHost\Innowise.Profiles.RmqHost.csproj", "{3B27850C-4653-4021-903E-A2A14E6C8455}"
