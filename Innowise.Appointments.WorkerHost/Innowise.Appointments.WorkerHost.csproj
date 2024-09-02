@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,6 +17,12 @@
     <ItemGroup>
       <ProjectReference Include="..\Innowise.Appointments.Application\Innowise.Appointments.Application.csproj" />
       <ProjectReference Include="..\Innowise.Appointments.Infrastructure\Innowise.Appointments.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

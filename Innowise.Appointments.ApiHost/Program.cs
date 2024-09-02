@@ -46,7 +46,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// await DatabaseMigrationChecker.EnsureDatabaseIsFullyMigrated(app.Services);
+await DatabaseMigrationChecker.EnsureDatabaseIsFullyMigrated(app.Services);
 
 app.Run();
 

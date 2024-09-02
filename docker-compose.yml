@@ -1,0 +1,41 @@
+﻿services:
+  rabbitmq:
+    image: rabbitmq
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+  redis:
+    image: redis
+  innowise.appointments.apihost:
+    image: innowise.appointments.apihost
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    depends_on:
+      - postgres
+      - redis
+    build:
+      context: .
+      dockerfile: Innowise.Appointments.ApiHost/Dockerfile
+  innowise.apihost.rmqhost:
+    image: innowise.appointments.rmqhost
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    depends_on:
+      - rabbitmq
+      - postgres
+      - redis
+      - innowise.appointments.apihost
+    build:
+      context: .
+      dockerfile: Innowise.Appointments.RmqHost/Dockerfile
+  innowise.apihost.workerhost:
+    image: innowise.appointments.workerhost
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    depends_on:
+      - postgres
+      - innowise.appointments.apihost
+    build:
+      context: .
+      dockerfile: Innowise.Appointments.WorkerHost/Dockerfile

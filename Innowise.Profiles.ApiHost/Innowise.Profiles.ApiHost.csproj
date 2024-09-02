@@ -13,14 +13,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Innowise.Infrastructure.Exceptions\Innowise.Infrastructure.Exceptions.csproj" />
-    <ProjectReference Include="..\Innowise.Infrastructure.Services\Innowise.Infrastructure.Services.csproj" />
-    <ProjectReference Include="..\Profiles.Application\Profiles.Application.csproj" />
-    <ProjectReference Include="..\Profiles.Infrastructure\Profiles.Infrastructure.csproj" />
+    <ProjectReference Include="..\Innowise.Profiles.Application\Innowise.Profiles.Application.csproj" />
+    <ProjectReference Include="..\Innowise.Profiles.Contracts\Innowise.Profiles.Contracts.csproj" />
+    <ProjectReference Include="..\Innowise.Profiles.Infrastructure\Innowise.Profiles.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
